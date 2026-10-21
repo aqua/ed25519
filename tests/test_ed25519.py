@@ -2,13 +2,13 @@ import unittest
 from ed25519_orlp import ed25519_create_keypair, ed25519_sign, ed25519_verify, ed25519_key_exchange
 
 class TestEd25519(unittest.TestCase):
-    def test_keypair_creation(self):
+    def test_keypair_creation(self) -> None:
         pub, prv, seed = ed25519_create_keypair()
         self.assertEqual(len(pub), 32)
         self.assertEqual(len(prv), 64)
         self.assertEqual(len(seed), 32)
 
-    def test_sign_and_verify(self):
+    def test_sign_and_verify(self) -> None:
         pub, prv, seed = ed25519_create_keypair()
         message = b'foo'
         sig = ed25519_sign(message, pub, prv)
@@ -24,7 +24,7 @@ class TestEd25519(unittest.TestCase):
         bad_sig[0] ^= 0xFF
         self.assertFalse(ed25519_verify(bytes(bad_sig), message, pub))
 
-    def test_key_exchange(self):
+    def test_key_exchange(self) -> None:
         pub1, prv1, seed1 = ed25519_create_keypair()
         pub2, prv2, seed2 = ed25519_create_keypair()
         
