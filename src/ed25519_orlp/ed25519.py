@@ -13,12 +13,12 @@ If you need ed25119 for any other purpose, consider pynacl.
 """
 
 from pathlib import Path
-from ctypes import cdll, create_string_buffer
+from ctypes import CDLL, cdll, create_string_buffer
 import secrets
 from typing import Optional, Tuple
 
 
-def _load_lib():
+def _load_lib() -> CDLL:
     """Locate and load the ed25519 shared library."""
     # Try to find the compiled library in the package directory
     pkg_dir = Path(__file__).parent
