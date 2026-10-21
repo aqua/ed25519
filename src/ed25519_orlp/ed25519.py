@@ -9,7 +9,7 @@ more modern implementations; loosely speaking, the orlp keys are the
 output of a sha512 operation from what modern approaches use, so it can't
 be converted.
 
-If you need ed25119 for any other purpose, consider pynacl.
+If you need ed25519 for any other purpose, consider pynacl.
 """
 
 from pathlib import Path
