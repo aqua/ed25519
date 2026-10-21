@@ -115,7 +115,8 @@ def ed25519_verify(signature: bytes, message: bytes, pubkey: bytes) -> bool:
     Returns:
         True if the signature is valid, False otherwise.
     """
-    return cl.ed25519_verify(signature, message, len(message), pubkey) == 1
+    result: int = cl.ed25519_verify(signature, message, len(message), pubkey)
+    return result == 1
 
 
 def ed25519_key_exchange(pubkey: bytes, prvkey: bytes) -> bytes:
