@@ -20,7 +20,7 @@ class TestEd25519(unittest.TestCase):
         self.assertFalse(ed25519_verify(sig, b'bar', pub))
         
         # Invalid signature (modified)
-        bad_sig = bytearray(bytes(sig))
+        bad_sig = bytearray(sig)
         bad_sig[0] ^= 0xFF
         self.assertFalse(ed25519_verify(bytes(bad_sig), message, pub))
 
@@ -32,7 +32,7 @@ class TestEd25519(unittest.TestCase):
         ss2 = ed25519_key_exchange(pub1, prv2)
         
         self.assertEqual(len(ss1), 32)
-        self.assertEqual(bytes(ss1), bytes(ss2))
+        self.assertEqual(ss1, ss2)
 
 if __name__ == "__main__":
     unittest.main()
