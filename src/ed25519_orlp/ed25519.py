@@ -9,16 +9,16 @@ more modern implementations; loosely speaking, the orlp keys are the
 output of a sha512 operation from what modern approaches use, so it can't
 be converted.
 
-If you need ed25119 for any other purpose, consider pynacl.
+If you need ed25519 for any other purpose, consider pynacl.
 """
 
 from pathlib import Path
-from ctypes import cdll, create_string_buffer
+from ctypes import CDLL, cdll, create_string_buffer
 import secrets
 from typing import Optional, Tuple
 
 
-def _load_lib():
+def _load_lib() -> CDLL:
     """Locate and load the ed25519 shared library."""
     # Try to find the compiled library in the package directory
     pkg_dir = Path(__file__).parent
@@ -115,7 +115,8 @@ def ed25519_verify(signature: bytes, message: bytes, pubkey: bytes) -> bool:
     Returns:
         True if the signature is valid, False otherwise.
     """
-    return cl.ed25519_verify(signature, message, len(message), pubkey) == 1
+    result: int = cl.ed25519_verify(signature, message, len(message), pubkey)
+    return result == 1
 
 
 def ed25519_key_exchange(pubkey: bytes, prvkey: bytes) -> bytes:

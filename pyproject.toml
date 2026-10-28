@@ -12,6 +12,7 @@ license = "Zlib"
 classifiers = [
     "Programming Language :: Python :: 3",
     "Topic :: Security :: Cryptography",
+    "Typing :: Typed",
 ]
 requires-python = ">=3.9"
 

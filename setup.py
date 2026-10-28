@@ -31,6 +31,6 @@ setup(
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     ext_modules=[ed25519_extension],
-    package_data={"ed25519_orlp": ["csrc/*"]},
+    package_data={"ed25519_orlp": ["csrc/*", "py.typed"]},
     cmdclass={"bdist_wheel": bdist_wheel_abi_none},
 )

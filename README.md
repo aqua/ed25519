@@ -7,7 +7,7 @@ representation derivative of the seed but not reversible to it, and whose keys
 are incompatible with most other ed25519 libraries (including all known Python
 implementations).
 
-If you need ed25119 for any other purpose, consider pynacl.
+If you need ed25519 for any other purpose, consider pynacl.
 
 ## Installing
 
